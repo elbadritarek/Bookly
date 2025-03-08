@@ -9,9 +9,9 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24.0),
-      child: const Column(
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomAppBar(),
@@ -20,6 +20,9 @@ class HomeViewBody extends StatelessWidget {
           Text(
             "Best Seller",
             style: Styles.textStyle18,
+          ),
+          SizedBox(
+            height: 20,
           ),
           BestSellerListViewItem(),
         ],
@@ -35,18 +38,38 @@ class BestSellerListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
-      child: AspectRatio(
-        aspectRatio: 2.5 / 4,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.red,
-            image: const DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(assetsData.testImage),
+      child: Row(
+        children: [
+          AspectRatio(
+            aspectRatio: 2.5 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.red,
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(assetsData.testImage),
+                ),
+              ),
             ),
           ),
-        ),
+          const SizedBox(
+            width: 30,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.55,
+                child: const Text(
+                  "Harry Potter and the Gooblet of fire",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle20,
+                ),
+              )
+            ],
+          )
+        ],
       ),
     );
   }
